@@ -1,5 +1,6 @@
 # <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python logo" width="32" style="vertical-align: middle; margin-right: 8px;"> Python
+Um repositório para eu depositar alguns códigos em python demonstrando meu conhecimento na linguagem. 
 
-Um repositório para adicionar alguns códigos que venho aprendendo por meio das aulas da Alura.
+Primeiramente dou total crédito a escola [Alura](https://www.alura.com.br/) por fornecer alguns desafios práticos para que eu pudesse aprender e apresentar alguns códigos dentro desse repositório. Ainda estou aprendendo funções básicas, mas conforme for avançando no meu conhecimento vou adicionando códigos mais complexos. 
 
-Dou total crédito às aulas da Alura em boa parte dos códigos que vou trazer dentro desse repositório. Algumas aulas e projetos eu peguei como base e acrescentei algumas coisas para tornar o código um pouco mais "Complexo". Mas até o momento ainda estou aprendendo as funções Python e aprimorando cada dia mais.
+A maioria dos códigos deste repositório foi testado utilizando o [Google Colab](https://colab.research.google.com), uma plataforma online gratuita para executar notebooks em Python.  
