@@ -1,0 +1,49 @@
+import sys
+
+print('Vamos começar fazendo o cadastro do senhor(a) no nosso sistema. Poderia passar para a gente algumas informações, por gentileza?')
+print('Para sair do nosso sistema de cadastro, apenas digitar sair dentro de \"Me informe o Cnpj\"')
+tentativas = 3
+for i in range(tentativas):
+  cnpj = input('Me informe o CNPJ da sua empresa: ')
+  if cnpj == 'Sair' or cnpj == 'SAIR' or cnpj == 'sair':
+    print('Encerrando..')
+    sys.exit()
+
+  elif len(cnpj) > 14:
+        print('Não pode ultrapassar 14 caracteres!\n')
+
+  elif len(cnpj) < 14:
+        print('Não pode ser menor que 14 caracteres!\n')
+
+  else:
+        print('CNPJ válido! Cadastro realizado.\n')
+        break
+else:
+    print('Número de tentativas excedido. Por favor, tente novamente mais tarde.\n')
+
+
+
+print('Abaixo será informado os seus gastos\n')
+Gastos = [2172.54, 3701.35, 3518.09, 3456.61, 3249.38, 2840.82, 3891.45, 3075.26, 2317.64, 3219.08]
+Total = sum(Gastos)
+
+print(f'O gasto total da sua empresa é {Total}')
+
+Quantidade = len(Gastos)
+Média = Total / Quantidade
+
+print(f'A média de gastos da sua empresa é {Média}\n')
+#2) Com os mesmos dados da questão anterior, defina quantas compras foram realizadas acima de 3000 reais e calcule a porcentagem quanto ao total de compra
+
+Gastos_acima_3000 = []
+for valores in Gastos:
+  if valores > 3000:
+    print(f'Segue os valores acima de 3000: {valores}')
+    Gastos_acima_3000.append(valores)
+
+Quantidade2 = len(Gastos_acima_3000)
+porcentagem = (Quantidade2 / Quantidade) * 100
+
+Resultado = print(f'\nO resultado da sua porcentagem é:{porcentagem}%')
+
+##Lembrando que o conteudo que aprendi e apliquei nesse código, veio por meio da Alura e que implementei coisas a mais durante o código. 
