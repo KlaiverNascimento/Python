@@ -1,0 +1,48 @@
+# Você recebeu uma demanda para gerar números de token para acessar o aplicativo de uma empresa.
+# O token precisa ser par e variar de 1000 até 9998. Escreva um código que solicita à pessoa usuária o seu nome e exibe uma mensagem junto a esse token gerado aleatoriamente.
+import random
+
+Dados = {}
+print('Seja bem vindo a empresa!')
+print('Para iniciarmos preciso que você me forneça algumas informações a mais para cadastrar e gerar o seu Token de acesso.')
+Nome = input('\nMe informe o seu primeiro e ultimo nome: ')
+while True:
+  Telefone = input('\nMe informe o seu número de telefone: ')
+  if len(Telefone) > 11:
+    print('\nO número não pode ultrapassar 11 digitos!')
+    continue
+  elif len(Telefone) < 11:
+    print('\nO número não pode ser menor que 11 digitos!')
+    continue
+  else:
+    break
+while True:
+  CPF = input('\nMe informe o seu CPF (Não é necessário adicionar a pontuação): ')
+  if len(CPF) > 11:
+    print('Não pode ultrapassar 11 digitos!')
+    continue
+  elif len(CPF) < 11:
+    print('Não pode ser menor que 11 digitos!')
+  else:
+    break
+
+Dados['Nome'] = Nome
+Dados['Telefone'] = Telefone
+Dados['CPF'] = CPF
+
+Id = random.randrange(1000, 10000, 2)
+Token = print(f"\nOlá, {Nome}, o seu token de acesso é {Id}! Seja bem-vindo(a)!")
+print('Caso esqueça o seu Token, pode refazer o mesmo processo que fizemos anteriormente')
+Dados['Token'] = Id
+
+while True:
+  VerificarDados = input('\nVocê gostaria de verificar o seus dados novamente? (Responda com S/N): ')
+  if VerificarDados == 'S' or VerificarDados == 's':
+    print(Dados)
+
+  elif VerificarDados == 'N' or VerificarDados == 'n':
+    print('Encerrando...')
+    break
+
+  elif VerificarDados != 'S' and VerificarDados != 'N' or VerificarDados != 's' and VerificarDados != 'n':
+    print('A sua resposta está invalida, responda apenas com o que foi pedido anteriormente')
