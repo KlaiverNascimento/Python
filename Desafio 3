@@ -1,0 +1,178 @@
+# Comentários referente a algumas coisas que estão no meu código.
+# Provavelmente deve ser encontrado em outros lugares algo parecido, mas até então, o código foi todo pensando e elaborado por mim. 
+# Gostaria de primeiramente dar os créditos a escola ALURA por disponibilizar os contéudos em que aprendi boa parte das coisas que adicionei dentro do meu código.
+# Os dados dentro do dicionário "CADASTRADOS" são ficticios e gerados pelo chat gpt para pode aplicar dentro do meu código.
+# Gostaria de ter utilizado uma função que utilizava quando comecei a aprender linguagem de programação que era o System.cls que limparia o terminal, porém não consegui e ia além do conhecimento que eu tinha adquirido até agora em python. 
+# Outra coisa que gostaria de ter feito também, é que ao decorrer do código, eu tenho uma função de adicionar um novo usuário dentro do meu dicionário, porém ele só fica enquanto o código está rodando, após encerrar, se eu começar novamente o meu código, o usuário que tinha adicionado não fica salvo. 
+
+CADASTRADOS = {
+    'Ricardo Silveira': [12345],
+    'Camila Viana': [12346],
+    'Gustavo Almeida': [12347],
+    'Juliana Santos': [12348],
+    'Bruno Costa': [12349],
+    'Natália Pereira': [12350],
+    'Leonardo Souza': [12351],
+    'Amanda Ferreira': [12352],
+    'Felipe Rodrigues': [12353],
+    'Isabella Lima': [12354],
+    'Diego Martins': [12355],
+    'Bianca Gomes': [12356],
+    'Eduardo Barbosa': [12357],
+    'Letícia Carvalho': [12358],
+    'Vinícius Castro': [12359],
+    'Marina Oliveira': [12360],
+    'Gabriel Fernandes': [12361],
+    'Luana Nunes': [12362],
+    'Thiago Santos': [12363],
+    'Rafaela Dutra': [12364],
+    'Caio Menezes': [12365],
+    'Sofia Marques': [12366],
+    'Lucas Morais': [12367],
+    'Clara Assis': [12368],
+    'Pedro Pires': [12369],
+    'Larissa Rocha': [12370],
+    'Daniel Siqueira': [12371],
+    'Elisa Vasconcelos': [12372],
+    'Marcelo Ribeiro': [12373],
+    'Carolina Costa': [12374],
+    'João Pedro': [12375],
+    'Laura Lins': [12376],
+    'Arthur Farias': [12377],
+    'Júlia Melo': [12378],
+    'Miguel Bernardes': [12379],
+    'Helena Fontes': [12380],
+    'Davi Guimarães': [12381],
+    'Isabela Neves': [12382],
+    'Enzo Cruz': [12383],
+    'Valentina Aguiar': [12384]
+}
+
+while True:
+    print('\nSISTEMA DE VERIFICAÇÃO DOS DADOS')
+    print('O que você gostaria de consultar dentro do nosso banco:')
+    print('1º Verificar todos os usuários cadastrados')
+    print('2º Procurar usuário especifico')
+    print('3º Adicionar um novo usuário')
+    print('4º Sair')
+
+    Número = input('\nInforme aqui a opção que deseja: ')
+
+    if Número == '4':
+        print('Encerrando...')
+        break 
+    elif Número == '1':
+        print('\nUsuários Cadastrados:')
+        print(CADASTRADOS)
+
+    elif Número == '2':
+        while True:
+            print('\nVocê gostaria de consultar os dados por meio:')
+            print('1º Nome')
+            print('2º ID')
+            print('3º Campos completos do usuário')
+
+            Selecionar = input('\nInforme a opção: ')
+
+            if Selecionar == '1':
+                Nome = input('Me informe o nome do usuário: ')
+                try:
+                    CADASTRADOS[Nome]
+                    print(f'O usuário {Nome} já está cadastrado no sistema.')
+                except KeyError:
+                    print(f'O usuário {Nome} não se encontra no nosso banco de dados.')
+                break
+
+            elif Selecionar == '2':
+                try:
+                    ID = int(input('Me informe o ID que deseja consultar: '))
+                    encontrado = False
+                    for VER_ID in CADASTRADOS.values():
+                        if ID in VER_ID:
+                            print(f'O ID {ID} informado já está cadastrado no sistema!')
+                            encontrado = True
+                            break
+                    if not encontrado:
+                        print(f'O ID {ID} não está no nosso banco de usuários.')
+                except ValueError:
+                    print("Entrada inválida. Por favor, digite um número válido para o ID.")
+                break
+
+            elif Selecionar == '3':
+                CONSULTA = input('Me informe o NOME ou o ID: ')
+                try:
+                    CONSULTA_ID = int(CONSULTA)
+                    usuario_encontrado = None
+                    for nome, ids in CADASTRADOS.items():
+                        if CONSULTA_ID in ids:
+                            usuario_encontrado = nome
+                            break
+                    if usuario_encontrado:
+                        print(f"Nome: {usuario_encontrado}, ID: {CADASTRADOS[usuario_encontrado]}")
+                    else:
+                        print(f"ID '{CONSULTA_ID}' não encontrado.")
+                except ValueError:
+                    nome_procurado = CONSULTA
+                    try:
+                        ids_encontrados = CADASTRADOS[nome_procurado]
+                        print(f"Nome: {nome_procurado} e ID: {ids_encontrados}")
+                    except KeyError:
+                        print(f"Usuário '{nome_procurado}' não encontrado.")
+                        adicionar = input(f"Usuário '{nome_procurado}' não encontrado. Gostaria de adicioná-lo? (s/n): ").lower()
+                        if adicionar == 's':
+                            while True:
+                                try:
+                                    New_ID_str = input(f'Me informe o ID para {nome_procurado} (5 dígitos): ')
+                                    New_ID = int(New_ID_str)
+                                    if New_ID < 10000 or New_ID > 99999:
+                                        print('O ID deve ter 5 dígitos. Tente novamente.')
+                                        continue
+
+                                    CADASTRADOS[nome_procurado] = [New_ID]
+                                    print(f"Usuário '{nome_procurado}' adicionado com sucesso!")
+                                    break
+                                except ValueError:
+                                    print('Entrada inválida. Por favor, digite um valor válido.')
+                break
+
+            else:
+                print('\nOpção de consulta inválida. Por favor, escolha 1, 2 ou 3.')
+                continue
+
+            continuar_consulta = input('\nRealizar outra consulta? (s/n): ').lower()
+            if continuar_consulta != 's':
+                break
+
+    elif Número == '3':
+        try:
+            QuantidadeNovosUsuários = int(input('Quantos usuários você gostaria de adicionar: '))
+            for i in range(QuantidadeNovosUsuários):
+                print(f'\nAdicionando o {i+1}º usuário...')
+                New_Usuário = input(f'Me informe o nome do {i+1}º usuário: ')
+
+                while True:
+                    New_ID_str = input(f'Me informe o ID do {i+1}º usuário (5 dígitos): ')
+                    try:
+                        New_ID = int(New_ID_str)
+                        if New_ID < 10000 or New_ID > 99999:
+                            print('O ID deve ter 5 dígitos. Tente novamente.')
+                            continue
+                        break
+                    except ValueError:
+                        print('Entrada inválida. Por favor, digite um valor válido.')
+
+                CADASTRADOS[New_Usuário] = [New_ID]
+                print(f'Usuário {New_Usuário} adicionado com sucesso!')
+            print('\nCadastro de todos os usuários finalizado.')
+
+        except ValueError:
+            print('\nO valor inserido está incorreto. Tente novamente e insira um valor válido.')
+
+    else:
+        print('\nOpção inválida. Por favor, escolha 1, 2, 3 ou 4.')
+
+    if Número != '4':
+        continuar_principal = input('\nGostaria de continuar no sistema? (s/n): ').lower()
+        if continuar_principal != 's':
+            print('Encerrando o programa...')
+            break
